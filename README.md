@@ -8,7 +8,7 @@ yokeJS is a pure and native JavaScript binding/triggering library for event base
 IE9+, Chrome 15+, Firefox 11+, Safari 5.1+
 
 ## Status
-Alpha - Version 0.0.1
+Beta - Version 0.9.0
 
 ## Platforms / Technologies
 * [JavaScript](http://en.wikipedia.org/wiki/JavaScript)
