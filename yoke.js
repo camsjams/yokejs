@@ -33,6 +33,16 @@ var yoke = yoke || {},
         __getChildById = function (ele, id) {
             return ele.querySelector('#' + id);
         },
+        __getElementsByClass = function (ele, className) {
+            var nodes;
+            if (ele.getElementsByClassName) {
+                nodes = ele.getElementsByClassName(className);
+            } else {
+                nodes = document.querySelectorAll('[class = ' + className + ']');
+            }
+            return nodes;
+
+        },
     // private functions
         __fnAddEvent,
         __fnAddEventListener,
@@ -54,7 +64,7 @@ var yoke = yoke || {},
                 customEvt = new CustomEvent(eventName);
             } else {
                 // Create the event using deprecated method
-                customEvt = document.createEvent('Event');
+                customEvt = doc.createEvent('Event');
                 // Define event name
                 customEvt.initEvent(eventName, true, true);
             }
@@ -118,7 +128,7 @@ var yoke = yoke || {},
     };
     // unbind all from name - destructive
     __fnUnBindAll = function (name) {
-        var yokes = __yokes.getElementsByClassName(name);
+        var yokes = __getElementsByClass(__yokes, name);
         if (yokes.length) {
             while (yokes.length) {
                 if (yokes[0]) {
@@ -133,7 +143,7 @@ var yoke = yoke || {},
     };
     // list all
     __fnList = function (name) {
-        var yokes = __yokes.getElementsByClassName(name);
+        var yokes = __getElementsByClass(__yokes, name);
         if (yokes.length) {
             for (var i = 0; i < yokes.length; i++) {
                 __log('yoke:' + yokes[i].className + ' id:' + yokes[i].id);
@@ -142,15 +152,15 @@ var yoke = yoke || {},
     };
     // triggering function
     __fnTrigger = function (name) {
-        var domEvent = __yokeEvents[name];
-        if (domEvent) {
-            var yokes = __yokes.getElementsByClassName(name);
+        //var domEvent = __yokeEvents[name];
+        //if (domEvent) {
+            var yokes = __getElementsByClass(__yokes, name);
             if (yokes.length) {
                 for (var i = 0; i < yokes.length; i++) {
-                    __fnDispatchEvent(yokes[i], domEvent);
+                    __fnDispatchEvent(yokes[i], name);
                 }
             }
-        }
+        //}
     };
 
     yoke = function (name, options) {
