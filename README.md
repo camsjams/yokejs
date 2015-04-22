@@ -1,6 +1,6 @@
 ## [yokeJS](https://github.com/camsjams/yokejs)
 
-yokeJS is a pure and native JavaScript binding/triggering library for event based web applications.
+yokeJS is a pure JavaScript binding/triggering library for event based web applications.
 
 * [Live Demo -- coming soon](http://etalx.com/)
 
